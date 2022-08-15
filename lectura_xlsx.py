@@ -10,25 +10,38 @@
 # 2 left
 # 3 down
 
-import openpyxl
+from types import NoneType
+import openpyxl , modo_1 , modo_2
+
 openfile = openpyxl.load_workbook('ejemplos_rutas.xlsx')
 
-modo1,modo2 = [],[]
+list1 , list2 = [],[]
 
 sheet = openfile.get_sheet_by_name('Modo 1')
-datos = sheet['A1':'E5']
-for row in datos:
+data = sheet['A1':'E5']
+for row in data:
     for cell in row:
-        modo1.append(cell.value)
+        if cell.value == None:
+            list1.append(0)
+        else:
+            list1.append(cell.value)
 
 sheet = openfile.get_sheet_by_name('Modo 2')
-datos = sheet['A1':'E5']
-for row in datos:
+data = sheet['A1':'E5']
+for row in data:
     for cell in row:
-        modo2.append(cell.value)
+        if cell.value == None:
+            list2.append(2)
+        else:
+            list2.append(cell.value)
 
 
-print('Datos modo 1 \n\n ',modo1,'\n')
-print('Tamaño lista     ',len(modo1))
-print('\n\nDatos modo 2 \n\n ',modo2, '\n')
-print('Tamaño lista     ',len(modo2))
+
+
+print('Datos modo 1 \n\n ',list1,'\n')
+print('CASILLA INICIO     ',modo_1.start(list1))
+modo_1.color(list1)
+modo_1.move(list1)
+
+#print('\n\nDatos modo 2 \n\n ',list2, '\n')
+#print('Tamaño lista     ',modo_2.start(list2))'''
