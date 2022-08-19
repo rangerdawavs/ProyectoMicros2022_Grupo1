@@ -10,21 +10,28 @@
 # 2 left
 # 3 down
 
-from types import NoneType
+#from types import NoneType
 import openpyxl , modo_1 , modo_2
-
+from matrx_a_lista_instrucciones import matrx_a_lista
 openfile = openpyxl.load_workbook('ejemplos_rutas.xlsx')
 
 list1 , list2 = [],[]
-
+matrx1=[]
+test_list=[]
 sheet = openfile.get_sheet_by_name('Modo 1')
 data = sheet['A1':'E5']
 for row in data:
     for cell in row:
         if cell.value == None:
+            test_list.append(0)
             list1.append(0)
         else:
+            test_list.append(cell.value)
             list1.append(cell.value)
+    matrx1.append(test_list)
+    test_list=[]
+print(matrx1)
+print(matrx_a_lista(matrx1))
 
 sheet = openfile.get_sheet_by_name('Modo 2')
 data = sheet['A1':'E5']
@@ -34,8 +41,6 @@ for row in data:
             list2.append(2)
         else:
             list2.append(cell.value)
-
-
 
 
 print('Datos modo 1 \n\n ',list1,'\n')
