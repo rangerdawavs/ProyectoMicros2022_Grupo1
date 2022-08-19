@@ -25,11 +25,14 @@ for row in data:
     for cell in row:
         if cell.value == None:
             test_list.append(0)
+            list1.append(0)
         else:
             test_list.append(cell.value)
+            list1.append(cell.value)
     matrx1.append(test_list)
     test_list=[]
 print(matrx1)
+
 sheet = openfile.get_sheet_by_name('Modo 2')
 data = sheet['A1':'E5']
 for row in data:
