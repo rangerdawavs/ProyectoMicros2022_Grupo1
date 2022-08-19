@@ -16,16 +16,20 @@ import openpyxl , modo_1 , modo_2
 openfile = openpyxl.load_workbook('ejemplos_rutas.xlsx')
 
 list1 , list2 = [],[]
+matrx1=[]
+test_list=[]
 
 sheet = openfile.get_sheet_by_name('Modo 1')
 data = sheet['A1':'E5']
 for row in data:
     for cell in row:
         if cell.value == None:
-            list1.append(0)
+            test_list.append(0)
         else:
-            list1.append(cell.value)
-
+            test_list.append(cell.value)
+    matrx1.append(test_list)
+    test_list=[]
+print(matrx1)
 sheet = openfile.get_sheet_by_name('Modo 2')
 data = sheet['A1':'E5']
 for row in data:
