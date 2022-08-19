@@ -12,7 +12,7 @@
 
 #from types import NoneType
 import openpyxl , modo_1 , modo_2
-
+from matrx_a_lista_instrucciones import matrx_a_lista
 openfile = openpyxl.load_workbook('ejemplos_rutas.xlsx')
 
 list1 , list2 = [],[]
@@ -32,6 +32,7 @@ for row in data:
     matrx1.append(test_list)
     test_list=[]
 print(matrx1)
+print(matrx_a_lista(matrx1))
 
 sheet = openfile.get_sheet_by_name('Modo 2')
 data = sheet['A1':'E5']
@@ -42,10 +43,9 @@ for row in data:
         else:
             list2.append(cell.value)
 
-
 print('Datos modo 1 \n\n ',list1,'\n')
 print('CASILLA INICIO     ',modo_1.start(list1), '\n')
-print(modo_1.color(list1)+modo_1.move(list1))
+print(modo_1.color(list1),modo_1.move(list1))
 
 #print('\n\nDatos modo 2 \n\n ',list2, '\n')
 #print('Tamaño lista     ',modo_2.start(list2))'''
